@@ -1,0 +1,8 @@
+1- npm install
+2-run the project with (npm run dev)
+3-import the db with name (blog) from the files which exists in DB directory in others dirctory
+4-homepagein route (localhost:3000)
+4-login route (localhost:3000/login)
+5-login with
+   email:mahmoudafifi460@gmail.com
+   password:123456

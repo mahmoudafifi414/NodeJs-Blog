@@ -1,0 +1,18 @@
+<div ng-controller="CommentController">
+    <button class="btn btn-primary" ng-click="showCommentForm()">write comment</button>
+    <button class="btn btn-primary" ng-click="getComments(post.id)">{{commentButtonTitle}}</button>
+    <div ng-repeat="comment in comments" ng-show="showComments">
+        <p><b>{{comment.name}}</b> : {{comment.comment}}</p>
+    </div>
+    <div class="rendered-form" ng-show="showCommentFormForAdd">
+        <div ng-repeat="error in errors">
+            <h4 style="color: red; font-size: 20px;">-{{error}}</h4>
+        </div>
+        <label for="text" class="fb-text-label">name</label>
+        <input type="text"ng-model="name" class="form-control col-md-2" name="text" id="text">
+        <label for="text" class="fb-text-label">comment</label>
+        <input type="text" ng-model="comment" class="form-control col-md-2" name="text" id="text">
+        <button ng-click="writeComment(post.id)" class="btn btn-success">Save</button>
+        <button ng-click="closeCommentForm()" class="btn btn-info">close</button>
+    </div>
+</div>

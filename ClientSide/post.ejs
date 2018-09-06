@@ -1,0 +1,61 @@
+<div ng-controller="PostController" ng-init="getPosts()">
+    <div ng-if="myauth" style="margin-top: 5px;" class="col-md-12">
+        <button class="btn btn-success btn-block" ng-click="showForm()">{{postButtonText}}</button>
+    </div><br>
+    <fieldset ng-show="enabled">
+        <div class="rendered-form">
+            <div ng-repeat="error in errors">
+                <h4 style="color: red; font-size: 20px;">-{{error}}</h4>
+            </div>
+            <div class="fb-text form-group field-text">
+                <label for="text" class="fb-text-label">Title</label>
+                <input ng-model="title" type="text" class="form-control" name="text" id="text">
+            </div>
+            <div class="fb-textarea form-group field-body">
+                <label for="body" class="fb-textarea-label">body</label>
+                <textarea ng-model="body" class="form-control" name="body" id="body"></textarea>
+            </div>
+            <div>
+                <button ng-click="savePost()" class="btn btn-success">Save</button>
+                <button ng-click="closeForm()" class="btn btn-info">close</button>
+            </div>
+        </div>
+    </fieldset><br>
+    <div class="card-body" ng-show="enableEditing" style="width: 1100px;">
+        <div class="rendered-form">
+            <div ng-repeat="error in errors">
+                <h4 style="color: red; font-size: 20px;">-{{error}}</h4>
+            </div>
+            <div class="fb-text form-group field-text">
+                <label for="text" class="fb-text-label">Title</label>
+                <input type="text" ng-model="titleEdit" class="form-control" name="text" id="text">
+            </div>
+            <div class="fb-textarea form-group field-body">
+                <label for="body" class="fb-textarea-label">body</label>
+                <textarea type="textarea" ng-model="bodyEdit" class="form-control" name="body" id="body"></textarea>
+            </div>
+            <div>
+                <button ng-click="updatePost()" class="btn btn-success">edit</button>
+                <button ng-click="closeEditing()" class="btn btn-info">close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-repeat="post in posts">
+        <div class="col-md-12">
+            <div class="card mb-12">
+                <div class="card-body" ng-show="enablePosts" style="width: 1100px;">
+                    <p style="float: right;">
+                        <button class="btn btn-info" ng-click="editPost(post._id)">edit</button>
+                    </p>
+                    <p style="float: right;">
+                        <button class="btn btn-danger" ng-click="deletePost(post._id)">delete</button>
+                    </p>
+                    <h2 class="card-title">{{post.title}}</h2>
+                    <p class="card-text">{{post.body}}</p>
+                    <comment></comment>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
